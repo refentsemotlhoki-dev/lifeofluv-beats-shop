@@ -27,7 +27,8 @@ export const beats: Beat[] = [
     description:
       "Slow-burning keys under a heavy 808 glide. Room for a full verse before the drop.",
     artwork: "/images/hero-velvet.jpg",
-    preview: null,
+    preview:
+      "https://jmespcsjkrucykzugsxn.supabase.co/storage/v1/object/public/beats/velvet-hours.wav",
   },
   {
     slug: "ice-water",
@@ -37,7 +38,8 @@ export const beats: Beat[] = [
     mood: ["Hard", "Drill"],
     description: "Sliding bass, brittle hats and a cold string line that never lets up.",
     artwork: "/images/pendant-lol.jpg",
-    preview: null,
+    preview:
+      "https://jmespcsjkrucykzugsxn.supabase.co/storage/v1/object/public/beats/ice-water.wav",
   },
   {
     slug: "north-star",
@@ -47,7 +49,8 @@ export const beats: Beat[] = [
     mood: ["Melodic", "Anthem"],
     description: "Wide pads and a live-feel drum break built for a hook that carries.",
     artwork: "/images/chain-galaxy.jpg",
-    preview: null,
+    preview:
+      "https://jmespcsjkrucykzugsxn.supabase.co/storage/v1/object/public/beats/north-star.wav",
   },
   {
     slug: "platinum-chain",
@@ -57,7 +60,8 @@ export const beats: Beat[] = [
     mood: ["Club", "Bounce"],
     description: "Bright brass stabs over a bouncing pocket. Made to be loud in a car.",
     artwork: "/images/pendant-lol.jpg",
-    preview: null,
+    preview:
+      "https://jmespcsjkrucykzugsxn.supabase.co/storage/v1/object/public/beats/platinum-chain.wav",
   },
   {
     slug: "midnight-run",
@@ -67,7 +71,8 @@ export const beats: Beat[] = [
     mood: ["Cinematic", "Dark"],
     description: "A patient build, then a low brass hit that opens the whole track up.",
     artwork: "/images/hero-velvet.jpg",
-    preview: null,
+    preview:
+      "https://jmespcsjkrucykzugsxn.supabase.co/storage/v1/object/public/beats/midnight-run.wav",
     exclusiveSold: true,
   },
   {
@@ -78,7 +83,8 @@ export const beats: Beat[] = [
     mood: ["Warm", "R&B"],
     description: "Soft electric guitar loop, brushed drums and space for layered vocals.",
     artwork: "/images/chain-galaxy.jpg",
-    preview: null,
+    preview:
+      "https://jmespcsjkrucykzugsxn.supabase.co/storage/v1/object/public/beats/clear-skies.wav",
   },
 ];
 
