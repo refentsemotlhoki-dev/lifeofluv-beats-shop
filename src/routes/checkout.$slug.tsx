@@ -1,5 +1,5 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import { getBeat, PRICES } from "@/data/beats";
 import { AGREEMENTS } from "@/data/legal";
 import {
@@ -8,7 +8,6 @@ import {
   SignatureBlock,
   type AgreementFill,
 } from "@/components/agreement-document";
-import { supabase } from "@/integrations/supabase/client";
 
 type Licence = "lease" | "exclusive";
 
@@ -42,7 +41,7 @@ const normalize = (v: string) => v.trim().replace(/\s+/g, " ").toLowerCase();
 // Set VITE_CHECKOUT_FUNCTION_URL in your environment (Vercel + local .env) to:
 // https://jmespcsjkrucykzugsxn.supabase.co/functions/v1/create-checkout
 const CHECKOUT_FUNCTION_URL =
-  import.meta.env["VITE_CHECKOUT_FUNCTION_URL"] ??
+  import.meta.env.VITE_CHECKOUT_FUNCTION_URL ??
   "https://jmespcsjkrucykzugsxn.supabase.co/functions/v1/create-checkout";
 
 function Checkout() {
@@ -61,16 +60,6 @@ function Checkout() {
   const isExclusive = licence === "exclusive";
   const agreement = isExclusive ? AGREEMENTS.exclusive : AGREEMENTS.lease;
   const price = isExclusive ? PRICES.exclusive : PRICES.lease;
-
-  useEffect(() => {
-    void supabase.auth.getUser().then(({ data }) => {
-      const user = data.user;
-      if (!user) return;
-      setEmail(user.email ?? "");
-      const savedName = user.user_metadata?.["display_name"] ?? user.user_metadata?.["full_name"];
-      if (typeof savedName === "string") setName(savedName);
-    });
-  }, []);
 
   const today = useMemo(
     () =>

@@ -1,8 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/checkout/success")({
-  validateSearch: (search: Record<string, unknown>): { session_id?: string } =>
-    typeof search["session_id"] === "string" ? { session_id: search["session_id"] } : {},
+  validateSearch: (search: Record<string, unknown>): { session_id?: string } => ({
+    session_id: typeof search["session_id"] === "string" ? search["session_id"] : undefined,
+  }),
   head: () => ({
     meta: [
       { title: "Order complete — LifeOfLuv" },
@@ -40,9 +41,6 @@ function CheckoutSuccess() {
 
       <Link to="/beats" className="btn-base btn-platinum mt-10 inline-block">
         Browse more beats
-      </Link>
-      <Link to="/my-beats" className="btn-base btn-ghost mt-3 inline-block sm:ml-3">
-        Open My Beats
       </Link>
     </section>
   );
