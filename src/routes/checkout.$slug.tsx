@@ -41,7 +41,7 @@ const normalize = (v: string) => v.trim().replace(/\s+/g, " ").toLowerCase();
 // Set VITE_CHECKOUT_FUNCTION_URL in your environment (Vercel + local .env) to:
 // https://jmespcsjkrucykzugsxn.supabase.co/functions/v1/create-checkout
 const CHECKOUT_FUNCTION_URL =
-  import.meta.env.VITE_CHECKOUT_FUNCTION_URL ??
+  import.meta.env["VITE_CHECKOUT_FUNCTION_URL"] ??
   "https://jmespcsjkrucykzugsxn.supabase.co/functions/v1/create-checkout";
 
 function Checkout() {
