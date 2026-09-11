@@ -1,9 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/checkout/success")({
-  validateSearch: (search: Record<string, unknown>): { session_id?: string } => ({
-    session_id: typeof search["session_id"] === "string" ? search["session_id"] : undefined,
-  }),
+  validateSearch: (search: Record<string, unknown>): { session_id?: string } =>
+    typeof search["session_id"] === "string" ? { session_id: search["session_id"] } : {},
   head: () => ({
     meta: [
       { title: "Order complete — LifeOfLuv" },
