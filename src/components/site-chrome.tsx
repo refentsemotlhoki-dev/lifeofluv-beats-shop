@@ -1,4 +1,7 @@
 import { Link } from "@tanstack/react-router";
+import { useEffect, useState } from "react";
+import { UserRound } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
 
 
 const nav = [
@@ -9,6 +12,14 @@ const nav = [
 ] as const;
 
 export function SiteHeader() {
+  const [signedIn, setSignedIn] = useState(false);
+
+  useEffect(() => {
+    void supabase.auth.getSession().then(({ data }) => setSignedIn(Boolean(data.session)));
+    const { data } = supabase.auth.onAuthStateChange((_event, session) => setSignedIn(Boolean(session)));
+    return () => data.subscription.unsubscribe();
+  }, []);
+
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-background/85 backdrop-blur">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-4">
@@ -32,8 +43,8 @@ export function SiteHeader() {
             </Link>
           ))}
         </nav>
-        <Link to="/beats" className="btn-base btn-platinum hidden sm:inline-flex">
-          Browse Beats
+        <Link to={signedIn ? "/my-beats" : "/auth"} className="btn-base btn-platinum hidden sm:inline-flex">
+          <UserRound size={15} /> {signedIn ? "My Beats" : "Sign In"}
         </Link>
       </div>
     </header>

@@ -1,5 +1,5 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
+import { useEffect, useState, type FormEvent } from "react";
 import { Chrome, LogIn, UserPlus } from "lucide-react";
 import { Button } from "@/components/button";
 import { supabase } from "@/integrations/supabase/client";
@@ -42,7 +42,7 @@ function AuthPage() {
     });
   }, [destination, navigate]);
 
-  async function submit(event: React.FormEvent) {
+  async function submit(event: FormEvent) {
     event.preventDefault();
     setBusy(true);
     setMessage("");
