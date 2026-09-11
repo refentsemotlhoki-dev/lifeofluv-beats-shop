@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { PRICES, type Beat } from "@/data/beats";
+import { PlayPreviewButton } from "@/components/audio-player";
 
 export function BeatCard({ beat }: { beat: Beat }) {
   return (
