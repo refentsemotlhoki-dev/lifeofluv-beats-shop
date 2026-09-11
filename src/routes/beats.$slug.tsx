@@ -1,5 +1,6 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { getBeat, PRICES } from "@/data/beats";
+import { PlayPreviewButton } from "@/components/audio-player";
 
 export const Route = createFileRoute("/beats/$slug")({
   loader: ({ params }) => {
@@ -48,6 +49,9 @@ function BeatPage() {
 
           <div className="velvet-panel mt-6 rounded-lg p-5">
             <p className="eyebrow">Preview</p>
+            <div className="mt-4">
+              <PlayPreviewButton beat={beat} />
+            </div>
             {beat.preview ? (
               <audio controls src={beat.preview} className="mt-4 w-full">
                 Your browser does not support audio playback.

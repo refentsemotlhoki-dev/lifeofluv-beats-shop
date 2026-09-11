@@ -17,6 +17,7 @@ export function BeatCard({ beat }: { beat: Beat }) {
           className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/10 to-transparent" />
+        <PlayPreviewButton beat={beat} variant="icon" className="absolute bottom-4 right-4" />
         {beat.exclusiveSold ? (
           <span className="absolute left-4 top-4 rounded-sm border border-border bg-background/80 px-2 py-1 text-[0.625rem] uppercase tracking-[0.18em] text-muted-foreground">
             Exclusive sold
