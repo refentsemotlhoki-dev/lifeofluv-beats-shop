@@ -14,13 +14,84 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      profiles: {
+        Row: {
+          created_at: string
+          display_name: string
+          email: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          display_name?: string
+          email: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          display_name?: string
+          email?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      purchase_entitlements: {
+        Row: {
+          agreement_url: string | null
+          amount_cad: number
+          beat_slug: string
+          beat_title: string
+          created_at: string
+          download_url: string | null
+          id: string
+          licence_type: string
+          payment_reference: string | null
+          purchased_at: string
+          purchaser_email: string
+          updated_at: string
+          user_id: string | null
+        }
+        Insert: {
+          agreement_url?: string | null
+          amount_cad: number
+          beat_slug: string
+          beat_title: string
+          created_at?: string
+          download_url?: string | null
+          id?: string
+          licence_type: string
+          payment_reference?: string | null
+          purchased_at?: string
+          purchaser_email: string
+          updated_at?: string
+          user_id?: string | null
+        }
+        Update: {
+          agreement_url?: string | null
+          amount_cad?: number
+          beat_slug?: string
+          beat_title?: string
+          created_at?: string
+          download_url?: string | null
+          id?: string
+          licence_type?: string
+          payment_reference?: string | null
+          purchased_at?: string
+          purchaser_email?: string
+          updated_at?: string
+          user_id?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      sync_customer_account: { Args: never; Returns: undefined }
     }
     Enums: {
       [_ in never]: never
