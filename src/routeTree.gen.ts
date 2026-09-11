@@ -10,11 +10,14 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
+import { Route as AuthRouteImport } from './routes/auth'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as FaqRouteImport } from './routes/faq'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as SplitSheetRouteImport } from './routes/split-sheet'
 import { Route as TermsRouteImport } from './routes/terms'
+import { Route as AuthenticatedMyBeatsRouteImport } from './routes/_authenticated/my-beats'
 import { Route as BeatsIndexRouteImport } from './routes/beats.index'
 import { Route as BeatsSlugRouteImport } from './routes/beats.$slug'
 import { Route as CheckoutSlugRouteImport } from './routes/checkout.$slug'
@@ -27,6 +30,15 @@ import { Route as LicencesUnlimitedLeaseRouteImport } from './routes/licences.un
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
+  id: '/_authenticated',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContactRoute = ContactRouteImport.update({
@@ -53,6 +65,11 @@ const TermsRoute = TermsRouteImport.update({
   id: '/terms',
   path: '/terms',
   getParentRoute: () => rootRouteImport,
+} as any)
+const AuthenticatedMyBeatsRoute = AuthenticatedMyBeatsRouteImport.update({
+  id: '/my-beats',
+  path: '/my-beats',
+  getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
 const BeatsIndexRoute = BeatsIndexRouteImport.update({
   id: '/beats/',
@@ -97,11 +114,13 @@ const LicencesUnlimitedLeaseRoute = LicencesUnlimitedLeaseRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
   '/privacy': typeof PrivacyRoute
   '/split-sheet': typeof SplitSheetRoute
   '/terms': typeof TermsRoute
+  '/my-beats': typeof AuthenticatedMyBeatsRoute
   '/beats/$slug': typeof BeatsSlugRoute
   '/checkout/$slug': typeof CheckoutSlugRoute
   '/checkout/cancel': typeof CheckoutCancelRoute
@@ -113,11 +132,13 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
   '/privacy': typeof PrivacyRoute
   '/split-sheet': typeof SplitSheetRoute
   '/terms': typeof TermsRoute
+  '/my-beats': typeof AuthenticatedMyBeatsRoute
   '/beats/$slug': typeof BeatsSlugRoute
   '/checkout/$slug': typeof CheckoutSlugRoute
   '/checkout/cancel': typeof CheckoutCancelRoute
@@ -130,11 +151,14 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
+  '/auth': typeof AuthRoute
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
   '/privacy': typeof PrivacyRoute
   '/split-sheet': typeof SplitSheetRoute
   '/terms': typeof TermsRoute
+  '/_authenticated/my-beats': typeof AuthenticatedMyBeatsRoute
   '/beats/$slug': typeof BeatsSlugRoute
   '/checkout/$slug': typeof CheckoutSlugRoute
   '/checkout/cancel': typeof CheckoutCancelRoute
@@ -148,11 +172,13 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/auth'
     | '/contact'
     | '/faq'
     | '/privacy'
     | '/split-sheet'
     | '/terms'
+    | '/my-beats'
     | '/beats/$slug'
     | '/checkout/$slug'
     | '/checkout/cancel'
@@ -164,11 +190,13 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/auth'
     | '/contact'
     | '/faq'
     | '/privacy'
     | '/split-sheet'
     | '/terms'
+    | '/my-beats'
     | '/beats/$slug'
     | '/checkout/$slug'
     | '/checkout/cancel'
@@ -180,11 +208,14 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/_authenticated'
+    | '/auth'
     | '/contact'
     | '/faq'
     | '/privacy'
     | '/split-sheet'
     | '/terms'
+    | '/_authenticated/my-beats'
     | '/beats/$slug'
     | '/checkout/$slug'
     | '/checkout/cancel'
@@ -197,6 +228,8 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
+  AuthRoute: typeof AuthRoute
   ContactRoute: typeof ContactRoute
   FaqRoute: typeof FaqRoute
   PrivacyRoute: typeof PrivacyRoute
@@ -219,6 +252,20 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_authenticated': {
+      id: '/_authenticated'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof AuthenticatedRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contact': {
@@ -255,6 +302,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/terms'
       preLoaderRoute: typeof TermsRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/_authenticated/my-beats': {
+      id: '/_authenticated/my-beats'
+      path: '/my-beats'
+      fullPath: '/my-beats'
+      preLoaderRoute: typeof AuthenticatedMyBeatsRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
     }
     '/beats/': {
       id: '/beats/'
@@ -315,8 +369,21 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface AuthenticatedRouteRouteChildren {
+  AuthenticatedMyBeatsRoute: typeof AuthenticatedMyBeatsRoute
+}
+
+const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
+  AuthenticatedMyBeatsRoute: AuthenticatedMyBeatsRoute,
+}
+
+const AuthenticatedRouteRouteWithChildren =
+  AuthenticatedRouteRoute._addFileChildren(AuthenticatedRouteRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
+  AuthRoute: AuthRoute,
   ContactRoute: ContactRoute,
   FaqRoute: FaqRoute,
   PrivacyRoute: PrivacyRoute,
