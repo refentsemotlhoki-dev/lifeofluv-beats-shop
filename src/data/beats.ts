@@ -86,6 +86,17 @@ export const beats: Beat[] = [
     preview:
       "https://jmespcsjkrucykzugsxn.supabase.co/storage/v1/object/public/beats/clear-skies.wav",
   },
+  {
+    slug: "walk-it",
+    title: "Walk It",
+    bpm: 155,
+    key: "E minor",
+    mood: ["Moody", "Trap", "Upbeat"],
+    description: "A driving trap groove with a moody edge — energy that still moves.",
+    artwork: "/images/pendant-lol.jpg",
+    preview:
+      "https://jmespcsjkrucykzugsxn.supabase.co/storage/v1/object/public/beats/walk-it.wav",
+  },
 ];
 
 export function getBeat(slug: string) {
