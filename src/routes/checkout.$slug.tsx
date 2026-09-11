@@ -1,5 +1,5 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { getBeat, PRICES } from "@/data/beats";
 import { AGREEMENTS } from "@/data/legal";
 import {
@@ -8,6 +8,7 @@ import {
   SignatureBlock,
   type AgreementFill,
 } from "@/components/agreement-document";
+import { supabase } from "@/integrations/supabase/client";
 
 type Licence = "lease" | "exclusive";
 
@@ -60,6 +61,16 @@ function Checkout() {
   const isExclusive = licence === "exclusive";
   const agreement = isExclusive ? AGREEMENTS.exclusive : AGREEMENTS.lease;
   const price = isExclusive ? PRICES.exclusive : PRICES.lease;
+
+  useEffect(() => {
+    void supabase.auth.getUser().then(({ data }) => {
+      const user = data.user;
+      if (!user) return;
+      setEmail(user.email ?? "");
+      const savedName = user.user_metadata?.["display_name"] ?? user.user_metadata?.["full_name"];
+      if (typeof savedName === "string") setName(savedName);
+    });
+  }, []);
 
   const today = useMemo(
     () =>

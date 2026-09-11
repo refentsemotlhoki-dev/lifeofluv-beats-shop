@@ -41,6 +41,9 @@ function CheckoutSuccess() {
       <Link to="/beats" className="btn-base btn-platinum mt-10 inline-block">
         Browse more beats
       </Link>
+      <Link to="/my-beats" className="btn-base btn-ghost mt-3 inline-block sm:ml-3">
+        Open My Beats
+      </Link>
     </section>
   );
 }
