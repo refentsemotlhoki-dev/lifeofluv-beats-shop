@@ -31,7 +31,9 @@ export function BeatCard({ beat }: { beat: Beat }) {
         </p>
         <div className="hairline my-4" />
         <div className="flex items-center justify-between">
-          <span className="eyebrow">From ${PRICES.lease} CAD</span>
+          <span className="eyebrow">
+            {beat.exclusiveSold ? "No longer available" : `From $${PRICES.lease} CAD`}
+          </span>
           <span className="text-xs uppercase tracking-[0.16em] platinum-text">View beat</span>
         </div>
       </div>

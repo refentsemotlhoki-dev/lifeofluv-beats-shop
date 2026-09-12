@@ -79,14 +79,21 @@ function BeatPage() {
               Release your music with a broad, non-exclusive licence. You can use the beat in your
               project while LifeOfLuv may continue licensing it to other artists.
             </p>
-            <Link
-              to="/checkout/$slug"
-              params={{ slug: beat.slug }}
-              search={{ licence: "lease" }}
-              className="btn-base btn-platinum mt-6"
-            >
-              Get Unlimited Lease
-            </Link>
+            {beat.exclusiveSold ? (
+              <p className="mt-6 text-sm text-muted-foreground">
+                This beat's Exclusive licence has been sold, so it's no longer available for new
+                licences of any kind.
+              </p>
+            ) : (
+              <Link
+                to="/checkout/$slug"
+                params={{ slug: beat.slug }}
+                search={{ licence: "lease" }}
+                className="btn-base btn-platinum mt-6"
+              >
+                Get Unlimited Lease
+              </Link>
+            )}
             <p className="mt-4 text-xs text-muted-foreground">
               A simple choice for artists ready to record, release, and move.
             </p>

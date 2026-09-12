@@ -17,7 +17,10 @@ export const Route = createFileRoute("/checkout/$slug")({
   }),
   loader: ({ params }) => {
     const beat = getBeat(params.slug);
-    if (!beat) throw notFound();
+    // Once the Exclusive licence sells, the beat is off the market for any
+    // new licence (see the licence agreement text sent at fulfillment) —
+    // block direct URL access the same way the beat page hides both CTAs.
+    if (!beat || beat.exclusiveSold) throw notFound();
     return { beat };
   },
   head: () => ({
