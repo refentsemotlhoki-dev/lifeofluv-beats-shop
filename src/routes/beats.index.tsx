@@ -1,8 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { beats } from "@/data/beats";
+import { getBeats } from "@/lib/beats";
 import { BeatCard } from "@/components/beat-card";
 
 export const Route = createFileRoute("/beats/")({
+  loader: () => getBeats(),
   head: () => ({
     meta: [
       { title: "Beat Store — LifeOfLuv" },
@@ -22,6 +23,7 @@ export const Route = createFileRoute("/beats/")({
 });
 
 function BeatStore() {
+  const beats = Route.useLoaderData();
   return (
     <section className="mx-auto max-w-6xl px-5 py-20">
       <p className="eyebrow">Beat Store</p>

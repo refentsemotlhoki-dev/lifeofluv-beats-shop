@@ -1,10 +1,11 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { getBeat, PRICES } from "@/data/beats";
+import { PRICES } from "@/data/beats";
+import { getBeat } from "@/lib/beats";
 import { PlayPreviewButton } from "@/components/audio-player";
 
 export const Route = createFileRoute("/beats/$slug")({
-  loader: ({ params }) => {
-    const beat = getBeat(params.slug);
+  loader: async ({ params }) => {
+    const beat = await getBeat(params.slug);
     if (!beat) throw notFound();
     return { beat };
   },

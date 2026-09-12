@@ -1,6 +1,7 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { useMemo, useRef, useState } from "react";
-import { getBeat, PRICES } from "@/data/beats";
+import { PRICES } from "@/data/beats";
+import { getBeat } from "@/lib/beats";
 import { AGREEMENTS } from "@/data/legal";
 import {
   AgreementDetails,
@@ -15,8 +16,8 @@ export const Route = createFileRoute("/checkout/$slug")({
   validateSearch: (search: Record<string, unknown>): { licence: Licence } => ({
     licence: search["licence"] === "exclusive" ? "exclusive" : "lease",
   }),
-  loader: ({ params }) => {
-    const beat = getBeat(params.slug);
+  loader: async ({ params }) => {
+    const beat = await getBeat(params.slug);
     // Once the Exclusive licence sells, the beat is off the market for any
     // new licence (see the licence agreement text sent at fulfillment) —
     // block direct URL access the same way the beat page hides both CTAs.

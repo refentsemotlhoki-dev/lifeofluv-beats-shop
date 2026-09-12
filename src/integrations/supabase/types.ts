@@ -10,6 +10,48 @@ export type Database = {
   }
   public: {
     Tables: {
+      beats: {
+        Row: {
+          artwork_url: string
+          bpm: number
+          created_at: string
+          description: string
+          exclusive_sold: boolean
+          key: string
+          mood: string[]
+          preview_url: string | null
+          slug: string
+          title: string
+          trello_card_id: string | null
+        }
+        Insert: {
+          artwork_url: string
+          bpm: number
+          created_at?: string
+          description: string
+          exclusive_sold?: boolean
+          key: string
+          mood?: string[]
+          preview_url?: string | null
+          slug: string
+          title: string
+          trello_card_id?: string | null
+        }
+        Update: {
+          artwork_url?: string
+          bpm?: number
+          created_at?: string
+          description?: string
+          exclusive_sold?: boolean
+          key?: string
+          mood?: string[]
+          preview_url?: string | null
+          slug?: string
+          title?: string
+          trello_card_id?: string | null
+        }
+        Relationships: []
+      }
       orders: {
         Row: {
           beat_file_key: string | null

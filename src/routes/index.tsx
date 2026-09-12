@@ -1,10 +1,11 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { beats } from "@/data/beats";
+import { getBeats } from "@/lib/beats";
 import { BeatCard } from "@/components/beat-card";
 import { LicenceTable } from "@/components/licence-table";
 
 
 export const Route = createFileRoute("/")({
+  loader: () => getBeats(),
   head: () => ({
     meta: [
       { title: "LifeOfLuv — Simple Licensing. Serious Production." },
@@ -24,6 +25,7 @@ export const Route = createFileRoute("/")({
 });
 
 function Home() {
+  const beats = Route.useLoaderData();
   return (
     <>
       <section className="relative overflow-hidden border-b border-border">
