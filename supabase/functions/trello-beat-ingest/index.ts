@@ -84,7 +84,7 @@ function extensionOf(attachment: TrelloAttachment): string {
   return dot === -1 ? "" : attachment.name.slice(dot + 1).toLowerCase();
 }
 
-const AUDIO_EXTENSIONS = ["wav", "mp3", "m4a", "aiff", "flac"];
+const AUDIO_EXTENSIONS = ["wav", "mp3", "m4a", "aiff", "flac", "mp4"];
 const IMAGE_EXTENSIONS = ["jpg", "jpeg", "png", "webp"];
 
 function isAudio(a: TrelloAttachment) {
@@ -92,6 +92,27 @@ function isAudio(a: TrelloAttachment) {
 }
 function isImage(a: TrelloAttachment) {
   return a.mimeType?.startsWith("image/") || IMAGE_EXTENSIONS.includes(extensionOf(a));
+}
+
+const CONTENT_TYPE_BY_EXTENSION: Record<string, string> = {
+  wav: "audio/wav",
+  mp3: "audio/mpeg",
+  m4a: "audio/mp4",
+  aiff: "audio/aiff",
+  flac: "audio/flac",
+  mp4: "audio/mp4",
+  jpg: "image/jpeg",
+  jpeg: "image/jpeg",
+  png: "image/png",
+  webp: "image/webp",
+};
+
+// Trello sometimes reports mimeType as "" (not null) for link-style
+// attachments, which a `??` fallback won't catch — fall back to the file
+// extension whenever mimeType is empty or missing.
+function contentTypeOf(a: TrelloAttachment): string {
+  if (a.mimeType) return a.mimeType;
+  return CONTENT_TYPE_BY_EXTENSION[extensionOf(a)] ?? "application/octet-stream";
 }
 
 function parseField(desc: string, field: string): string | null {
@@ -199,12 +220,12 @@ async function processCard(card: TrelloCard): Promise<string> {
 
   const { error: audioUploadError } = await supabase.storage
     .from("beats")
-    .upload(audioKey, audioBytes, { contentType: validation.audio.mimeType ?? "audio/wav", upsert: true });
+    .upload(audioKey, audioBytes, { contentType: contentTypeOf(validation.audio), upsert: true });
   if (audioUploadError) throw new Error(`Audio upload failed: ${audioUploadError.message}`);
 
   const { error: artworkUploadError } = await supabase.storage
     .from("beats")
-    .upload(artworkKey, imageBytes, { contentType: validation.image.mimeType ?? "image/jpeg", upsert: true });
+    .upload(artworkKey, imageBytes, { contentType: contentTypeOf(validation.image), upsert: true });
   if (artworkUploadError) throw new Error(`Artwork upload failed: ${artworkUploadError.message}`);
 
   const { data: audioPublicUrl } = supabase.storage.from("beats").getPublicUrl(audioKey);
