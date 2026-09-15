@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { PRICES, type Beat } from "@/data/beats";
 import { PlayPreviewButton } from "@/components/audio-player";
 
-export function BeatCard({ beat }: { beat: Beat }) {
+export function BeatCard({ beat, showPrice = true }: { beat: Beat; showPrice?: boolean }) {
   return (
     <Link
       to="/beats/$slug"
@@ -32,7 +32,7 @@ export function BeatCard({ beat }: { beat: Beat }) {
         <div className="hairline my-4" />
         <div className="flex items-center justify-between">
           <span className="eyebrow">
-            {beat.exclusiveSold ? "No longer available" : `From $${PRICES.lease} CAD`}
+            {beat.exclusiveSold ? "No longer available" : showPrice ? `From $${PRICES.lease} CAD` : ""}
           </span>
           <span className="text-xs uppercase tracking-[0.16em] platinum-text">View beat</span>
         </div>

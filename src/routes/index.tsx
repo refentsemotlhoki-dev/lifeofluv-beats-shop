@@ -81,7 +81,7 @@ function Home() {
         </div>
         <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {beats.map((beat) => (
-            <BeatCard key={beat.slug} beat={beat} />
+            <BeatCard key={beat.slug} beat={beat} showPrice={false} />
           ))}
         </div>
       </section>
