@@ -1,11 +1,11 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { getBeats } from "@/lib/beats";
+import { getLatestBeats } from "@/lib/beats";
 import { BeatCard } from "@/components/beat-card";
 import { LicenceTable } from "@/components/licence-table";
 
 
 export const Route = createFileRoute("/")({
-  loader: () => getBeats(),
+  loader: () => getLatestBeats(3),
   head: () => ({
     meta: [
       { title: "LifeOfLuv — Simple Licensing. Serious Production." },
@@ -80,7 +80,7 @@ function Home() {
           </Link>
         </div>
         <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {beats.slice(0, 3).map((beat) => (
+          {beats.map((beat) => (
             <BeatCard key={beat.slug} beat={beat} />
           ))}
         </div>

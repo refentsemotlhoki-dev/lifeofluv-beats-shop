@@ -34,6 +34,16 @@ export async function getBeats(): Promise<Beat[]> {
   return (data ?? []).map(toBeat);
 }
 
+export async function getLatestBeats(limit: number): Promise<Beat[]> {
+  const { data, error } = await supabase
+    .from("beats")
+    .select(BEAT_COLUMNS)
+    .order("created_at", { ascending: false })
+    .limit(limit);
+  if (error) throw new Error("Could not load beats.");
+  return (data ?? []).map(toBeat);
+}
+
 export async function getBeat(slug: string): Promise<Beat | undefined> {
   const { data, error } = await supabase
     .from("beats")
