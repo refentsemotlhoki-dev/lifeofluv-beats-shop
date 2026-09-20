@@ -17,6 +17,7 @@ import { Route as FaqRouteImport } from './routes/faq'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as SplitSheetRouteImport } from './routes/split-sheet'
 import { Route as TermsRouteImport } from './routes/terms'
+import { Route as AuthenticatedAdminRouteImport } from './routes/_authenticated/admin'
 import { Route as AuthenticatedMyBeatsRouteImport } from './routes/_authenticated/my-beats'
 import { Route as BeatsIndexRouteImport } from './routes/beats.index'
 import { Route as BeatsSlugRouteImport } from './routes/beats.$slug'
@@ -26,6 +27,11 @@ import { Route as CheckoutSuccessRouteImport } from './routes/checkout.success'
 import { Route as LicencesIndexRouteImport } from './routes/licences.index'
 import { Route as LicencesExclusiveRouteImport } from './routes/licences.exclusive'
 import { Route as LicencesUnlimitedLeaseRouteImport } from './routes/licences.unlimited-lease'
+import { Route as AuthenticatedAdminIndexRouteImport } from './routes/_authenticated/admin.index'
+import { Route as AuthenticatedAdminOrdersRouteImport } from './routes/_authenticated/admin.orders'
+import { Route as AuthenticatedAdminBeatsIndexRouteImport } from './routes/_authenticated/admin.beats.index'
+import { Route as AuthenticatedAdminBeatsSlugRouteImport } from './routes/_authenticated/admin.beats.$slug'
+import { Route as AuthenticatedAdminBeatsNewRouteImport } from './routes/_authenticated/admin.beats.new'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -65,6 +71,11 @@ const TermsRoute = TermsRouteImport.update({
   id: '/terms',
   path: '/terms',
   getParentRoute: () => rootRouteImport,
+} as any)
+const AuthenticatedAdminRoute = AuthenticatedAdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
 const AuthenticatedMyBeatsRoute = AuthenticatedMyBeatsRouteImport.update({
   id: '/my-beats',
@@ -111,6 +122,35 @@ const LicencesUnlimitedLeaseRoute = LicencesUnlimitedLeaseRouteImport.update({
   path: '/licences/unlimited-lease',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthenticatedAdminIndexRoute = AuthenticatedAdminIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AuthenticatedAdminRoute,
+} as any)
+const AuthenticatedAdminOrdersRoute =
+  AuthenticatedAdminOrdersRouteImport.update({
+    id: '/orders',
+    path: '/orders',
+    getParentRoute: () => AuthenticatedAdminRoute,
+  } as any)
+const AuthenticatedAdminBeatsIndexRoute =
+  AuthenticatedAdminBeatsIndexRouteImport.update({
+    id: '/beats/',
+    path: '/beats/',
+    getParentRoute: () => AuthenticatedAdminRoute,
+  } as any)
+const AuthenticatedAdminBeatsSlugRoute =
+  AuthenticatedAdminBeatsSlugRouteImport.update({
+    id: '/beats/$slug',
+    path: '/beats/$slug',
+    getParentRoute: () => AuthenticatedAdminRoute,
+  } as any)
+const AuthenticatedAdminBeatsNewRoute =
+  AuthenticatedAdminBeatsNewRouteImport.update({
+    id: '/beats/new',
+    path: '/beats/new',
+    getParentRoute: () => AuthenticatedAdminRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -120,6 +160,7 @@ export interface FileRoutesByFullPath {
   '/privacy': typeof PrivacyRoute
   '/split-sheet': typeof SplitSheetRoute
   '/terms': typeof TermsRoute
+  '/admin': typeof AuthenticatedAdminRouteWithChildren
   '/my-beats': typeof AuthenticatedMyBeatsRoute
   '/beats/$slug': typeof BeatsSlugRoute
   '/checkout/$slug': typeof CheckoutSlugRoute
@@ -129,6 +170,11 @@ export interface FileRoutesByFullPath {
   '/licences/unlimited-lease': typeof LicencesUnlimitedLeaseRoute
   '/beats/': typeof BeatsIndexRoute
   '/licences/': typeof LicencesIndexRoute
+  '/admin/orders': typeof AuthenticatedAdminOrdersRoute
+  '/admin/': typeof AuthenticatedAdminIndexRoute
+  '/admin/beats/$slug': typeof AuthenticatedAdminBeatsSlugRoute
+  '/admin/beats/new': typeof AuthenticatedAdminBeatsNewRoute
+  '/admin/beats/': typeof AuthenticatedAdminBeatsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -147,6 +193,11 @@ export interface FileRoutesByTo {
   '/licences/unlimited-lease': typeof LicencesUnlimitedLeaseRoute
   '/beats': typeof BeatsIndexRoute
   '/licences': typeof LicencesIndexRoute
+  '/admin/orders': typeof AuthenticatedAdminOrdersRoute
+  '/admin': typeof AuthenticatedAdminIndexRoute
+  '/admin/beats/$slug': typeof AuthenticatedAdminBeatsSlugRoute
+  '/admin/beats/new': typeof AuthenticatedAdminBeatsNewRoute
+  '/admin/beats': typeof AuthenticatedAdminBeatsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -158,6 +209,7 @@ export interface FileRoutesById {
   '/privacy': typeof PrivacyRoute
   '/split-sheet': typeof SplitSheetRoute
   '/terms': typeof TermsRoute
+  '/_authenticated/admin': typeof AuthenticatedAdminRouteWithChildren
   '/_authenticated/my-beats': typeof AuthenticatedMyBeatsRoute
   '/beats/$slug': typeof BeatsSlugRoute
   '/checkout/$slug': typeof CheckoutSlugRoute
@@ -167,6 +219,11 @@ export interface FileRoutesById {
   '/licences/unlimited-lease': typeof LicencesUnlimitedLeaseRoute
   '/beats/': typeof BeatsIndexRoute
   '/licences/': typeof LicencesIndexRoute
+  '/_authenticated/admin/orders': typeof AuthenticatedAdminOrdersRoute
+  '/_authenticated/admin/': typeof AuthenticatedAdminIndexRoute
+  '/_authenticated/admin/beats/$slug': typeof AuthenticatedAdminBeatsSlugRoute
+  '/_authenticated/admin/beats/new': typeof AuthenticatedAdminBeatsNewRoute
+  '/_authenticated/admin/beats/': typeof AuthenticatedAdminBeatsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -178,6 +235,7 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/split-sheet'
     | '/terms'
+    | '/admin'
     | '/my-beats'
     | '/beats/$slug'
     | '/checkout/$slug'
@@ -187,6 +245,11 @@ export interface FileRouteTypes {
     | '/licences/unlimited-lease'
     | '/beats/'
     | '/licences/'
+    | '/admin/orders'
+    | '/admin/'
+    | '/admin/beats/$slug'
+    | '/admin/beats/new'
+    | '/admin/beats/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -205,6 +268,11 @@ export interface FileRouteTypes {
     | '/licences/unlimited-lease'
     | '/beats'
     | '/licences'
+    | '/admin/orders'
+    | '/admin'
+    | '/admin/beats/$slug'
+    | '/admin/beats/new'
+    | '/admin/beats'
   id:
     | '__root__'
     | '/'
@@ -215,6 +283,7 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/split-sheet'
     | '/terms'
+    | '/_authenticated/admin'
     | '/_authenticated/my-beats'
     | '/beats/$slug'
     | '/checkout/$slug'
@@ -224,6 +293,11 @@ export interface FileRouteTypes {
     | '/licences/unlimited-lease'
     | '/beats/'
     | '/licences/'
+    | '/_authenticated/admin/orders'
+    | '/_authenticated/admin/'
+    | '/_authenticated/admin/beats/$slug'
+    | '/_authenticated/admin/beats/new'
+    | '/_authenticated/admin/beats/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -303,6 +377,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TermsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_authenticated/admin': {
+      id: '/_authenticated/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AuthenticatedAdminRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/my-beats': {
       id: '/_authenticated/my-beats'
       path: '/my-beats'
@@ -366,14 +447,70 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LicencesUnlimitedLeaseRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_authenticated/admin/': {
+      id: '/_authenticated/admin/'
+      path: '/'
+      fullPath: '/admin/'
+      preLoaderRoute: typeof AuthenticatedAdminIndexRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/_authenticated/admin/orders': {
+      id: '/_authenticated/admin/orders'
+      path: '/orders'
+      fullPath: '/admin/orders'
+      preLoaderRoute: typeof AuthenticatedAdminOrdersRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/_authenticated/admin/beats/': {
+      id: '/_authenticated/admin/beats/'
+      path: '/beats'
+      fullPath: '/admin/beats/'
+      preLoaderRoute: typeof AuthenticatedAdminBeatsIndexRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/_authenticated/admin/beats/$slug': {
+      id: '/_authenticated/admin/beats/$slug'
+      path: '/beats/$slug'
+      fullPath: '/admin/beats/$slug'
+      preLoaderRoute: typeof AuthenticatedAdminBeatsSlugRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/_authenticated/admin/beats/new': {
+      id: '/_authenticated/admin/beats/new'
+      path: '/beats/new'
+      fullPath: '/admin/beats/new'
+      preLoaderRoute: typeof AuthenticatedAdminBeatsNewRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
   }
 }
 
+interface AuthenticatedAdminRouteChildren {
+  AuthenticatedAdminOrdersRoute: typeof AuthenticatedAdminOrdersRoute
+  AuthenticatedAdminIndexRoute: typeof AuthenticatedAdminIndexRoute
+  AuthenticatedAdminBeatsSlugRoute: typeof AuthenticatedAdminBeatsSlugRoute
+  AuthenticatedAdminBeatsNewRoute: typeof AuthenticatedAdminBeatsNewRoute
+  AuthenticatedAdminBeatsIndexRoute: typeof AuthenticatedAdminBeatsIndexRoute
+}
+
+const AuthenticatedAdminRouteChildren: AuthenticatedAdminRouteChildren = {
+  AuthenticatedAdminOrdersRoute: AuthenticatedAdminOrdersRoute,
+  AuthenticatedAdminIndexRoute: AuthenticatedAdminIndexRoute,
+  AuthenticatedAdminBeatsSlugRoute: AuthenticatedAdminBeatsSlugRoute,
+  AuthenticatedAdminBeatsNewRoute: AuthenticatedAdminBeatsNewRoute,
+  AuthenticatedAdminBeatsIndexRoute: AuthenticatedAdminBeatsIndexRoute,
+}
+
+const AuthenticatedAdminRouteWithChildren =
+  AuthenticatedAdminRoute._addFileChildren(AuthenticatedAdminRouteChildren)
+
 interface AuthenticatedRouteRouteChildren {
+  AuthenticatedAdminRoute: typeof AuthenticatedAdminRouteWithChildren
   AuthenticatedMyBeatsRoute: typeof AuthenticatedMyBeatsRoute
 }
 
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
+  AuthenticatedAdminRoute: AuthenticatedAdminRouteWithChildren,
   AuthenticatedMyBeatsRoute: AuthenticatedMyBeatsRoute,
 }
 

@@ -10,6 +10,18 @@ export type Database = {
   }
   public: {
     Tables: {
+      admins: {
+        Row: {
+          email: string
+        }
+        Insert: {
+          email: string
+        }
+        Update: {
+          email?: string
+        }
+        Relationships: []
+      }
       beats: {
         Row: {
           artwork_url: string
@@ -118,6 +130,7 @@ export type Database = {
     }
     Functions: {
       claim_orders_for_current_user: { Args: never; Returns: number }
+      is_admin: { Args: never; Returns: boolean }
     }
     Enums: {
       [_ in never]: never
