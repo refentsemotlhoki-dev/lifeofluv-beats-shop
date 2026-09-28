@@ -29,7 +29,10 @@ function toBeat(row: {
 }
 
 export async function getBeats(): Promise<Beat[]> {
-  const { data, error } = await supabase.from("beats").select(BEAT_COLUMNS).order("created_at");
+  const { data, error } = await supabase
+    .from("beats")
+    .select(BEAT_COLUMNS)
+    .order("created_at", { ascending: false });
   if (error) throw new Error("Could not load beats.");
   return (data ?? []).map(toBeat);
 }
