@@ -28,6 +28,12 @@ export async function listAllBeats(): Promise<BeatRow[]> {
   return data ?? [];
 }
 
+export async function slugExists(slug: string): Promise<boolean> {
+  const { data, error } = await supabase.from("beats").select("slug").eq("slug", slug).maybeSingle();
+  if (error) throw new Error(error.message);
+  return Boolean(data);
+}
+
 export async function getBeatRow(slug: string): Promise<BeatRow | null> {
   const { data, error } = await supabase.from("beats").select("*").eq("slug", slug).maybeSingle();
   if (error) throw new Error(error.message);
