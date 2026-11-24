@@ -8,3 +8,8 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+## Agent Instructions & Architecture Log
+
+For all architecture details, live Stripe/Supabase credentials, completed milestones, and upcoming tasks, please see:
+👉 **[`AGENT_LOG.md`](./AGENT_LOG.md)**
