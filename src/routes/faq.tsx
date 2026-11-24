@@ -7,7 +7,7 @@ const faqs = [
   },
   {
     q: "Can more than one artist use the same beat?",
-    a: "Yes, with an Unlimited Lease. It is non-exclusive, so LifeOfLuv may license the beat to more than one artist.",
+    a: "Yes, with a Basic Lease or Unlimited Lease. Both are non-exclusive, so LifeOfLuv may license the beat to more than one artist.",
   },
   {
     q: "What happens when an Exclusive is sold?",
@@ -23,11 +23,15 @@ const faqs = [
   },
   {
     q: "Which licence should I choose?",
-    a: "Choose Unlimited Lease when you want a straightforward non-exclusive licence for your release. Choose Exclusive when having LifeOfLuv stop future licensing of that beat matters to you. Read the applicable agreement before purchase.",
+    a: "Choose Basic Lease ( CAD) for your first record with up to 50,000 streams (eligible to upgrade). Choose Unlimited Lease ( CAD) for release without stream caps. Choose Exclusive ( CAD) when you want the beat removed from the store for future licensing.",
   },
   {
     q: "Can I use the beat before I buy?",
     a: "No. You may listen to the preview, but you need to purchase the applicable licence before recording, distributing, performing, uploading, or otherwise using the beat beyond any use expressly permitted by LifeOfLuv.",
+  },
+  {
+    q: "Can I upgrade my licence later?",
+    a: "Yes! If you start with a Basic Lease and your song begins gaining traction, you can upgrade to the Unlimited Lease by paying only the difference ( CAD). Your existing release is also protected if someone later buys the Exclusive.",
   },
 ];
 

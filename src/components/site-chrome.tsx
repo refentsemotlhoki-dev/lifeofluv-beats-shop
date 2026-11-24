@@ -48,6 +48,9 @@ export function SiteFooter() {
           <Link to="/beats" className="eyebrow hover:text-foreground">
             Beat Store
           </Link>
+          <Link to="/licences/basic-lease" className="eyebrow hover:text-foreground">
+            Basic Lease Agreement
+          </Link>
           <Link to="/licences/unlimited-lease" className="eyebrow hover:text-foreground">
             Unlimited Lease Agreement
           </Link>

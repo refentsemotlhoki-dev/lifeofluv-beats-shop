@@ -43,7 +43,7 @@ function Home() {
             Serious production.
           </h1>
           <p className="mt-6 max-w-xl text-lg text-muted-foreground">
-            Straightforward beats for artists who are ready to make the record.
+            From your first release to your next big record. Professional production, straightforward rights and licences starting at $20 CAD.
           </p>
           <div className="mt-10 flex flex-wrap gap-3">
             <Link to="/beats" className="btn-base btn-platinum">
@@ -87,10 +87,9 @@ function Home() {
       </section>
 
       <section className="mx-auto max-w-6xl px-5 pb-24">
-        <h2 className="max-w-2xl text-3xl md:text-4xl">Give your customers one simple decision</h2>
+        <h2 className="max-w-2xl text-3xl md:text-4xl">One simple decision — three tiers</h2>
         <p className="mt-5 max-w-2xl text-muted-foreground">
-          Need a beat for your next release? Choose the Unlimited Lease. Want LifeOfLuv to stop
-          offering that beat for new licences after your purchase? Choose Exclusive.
+          Start with a Basic Lease at $20, grow into an Unlimited Lease, or secure a beat exclusively. No unnecessary complexity.
         </p>
         <div className="mt-10">
           <LicenceTable />

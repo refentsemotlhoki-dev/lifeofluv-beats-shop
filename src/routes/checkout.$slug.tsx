@@ -10,11 +10,16 @@ import {
   type AgreementFill,
 } from "@/components/agreement-document";
 
-type Licence = "lease" | "exclusive";
+type Licence = "basic" | "lease" | "exclusive";
 
 export const Route = createFileRoute("/checkout/$slug")({
   validateSearch: (search: Record<string, unknown>): { licence: Licence } => ({
-    licence: search["licence"] === "exclusive" ? "exclusive" : "lease",
+    licence:
+      search["licence"] === "exclusive"
+        ? "exclusive"
+        : search["licence"] === "lease"
+          ? "lease"
+          : "basic",
   }),
   loader: async ({ params }) => {
     const beat = await getBeat(params.slug);
@@ -45,7 +50,7 @@ const normalize = (v: string) => v.trim().replace(/\s+/g, " ").toLowerCase();
 // Set VITE_CHECKOUT_FUNCTION_URL in your environment (Vercel + local .env) to:
 // https://jmespcsjkrucykzugsxn.supabase.co/functions/v1/create-checkout
 const CHECKOUT_FUNCTION_URL =
-  import.meta.env.VITE_CHECKOUT_FUNCTION_URL ??
+  import.meta.env["VITE_CHECKOUT_FUNCTION_URL"] ??
   "https://jmespcsjkrucykzugsxn.supabase.co/functions/v1/create-checkout";
 
 function Checkout() {
@@ -61,9 +66,10 @@ function Checkout() {
   const [submitError, setSubmitError] = useState<string | null>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
 
+  const isBasic = licence === "basic";
   const isExclusive = licence === "exclusive";
-  const agreement = isExclusive ? AGREEMENTS.exclusive : AGREEMENTS.lease;
-  const price = isExclusive ? PRICES.exclusive : PRICES.lease;
+  const agreement = isExclusive ? AGREEMENTS.exclusive : isBasic ? AGREEMENTS.basic : AGREEMENTS.lease;
+  const price = PRICES[licence];
 
   const today = useMemo(
     () =>
@@ -152,8 +158,16 @@ function Checkout() {
         <Link
           to="/checkout/$slug"
           params={{ slug: beat.slug }}
+          search={{ licence: "basic" }}
+          className={isBasic ? "btn-base btn-platinum" : "btn-base btn-ghost"}
+        >
+          Basic Lease ${PRICES.basic}
+        </Link>
+        <Link
+          to="/checkout/$slug"
+          params={{ slug: beat.slug }}
           search={{ licence: "lease" }}
-          className={isExclusive ? "btn-base btn-ghost" : "btn-base btn-platinum"}
+          className={!isBasic && !isExclusive ? "btn-base btn-platinum" : "btn-base btn-ghost"}
         >
           Unlimited Lease ${PRICES.lease}
         </Link>
@@ -263,7 +277,7 @@ function Checkout() {
           <span className="text-sm text-muted-foreground">
             I have read and agree to the{" "}
             <Link
-              to={isExclusive ? "/licences/exclusive" : "/licences/unlimited-lease"}
+              to={isExclusive ? "/licences/exclusive" : isBasic ? "/licences/basic-lease" : "/licences/unlimited-lease"}
               className="underline hover:text-foreground"
             >
               {agreement.title}

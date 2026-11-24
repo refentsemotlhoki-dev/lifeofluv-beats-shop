@@ -25,6 +25,7 @@ import { Route as CheckoutSlugRouteImport } from './routes/checkout.$slug'
 import { Route as CheckoutCancelRouteImport } from './routes/checkout.cancel'
 import { Route as CheckoutSuccessRouteImport } from './routes/checkout.success'
 import { Route as LicencesIndexRouteImport } from './routes/licences.index'
+import { Route as LicencesBasicLeaseRouteImport } from './routes/licences.basic-lease'
 import { Route as LicencesExclusiveRouteImport } from './routes/licences.exclusive'
 import { Route as LicencesUnlimitedLeaseRouteImport } from './routes/licences.unlimited-lease'
 import { Route as AuthenticatedAdminIndexRouteImport } from './routes/_authenticated/admin.index'
@@ -112,6 +113,11 @@ const LicencesIndexRoute = LicencesIndexRouteImport.update({
   path: '/licences/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LicencesBasicLeaseRoute = LicencesBasicLeaseRouteImport.update({
+  id: '/licences/basic-lease',
+  path: '/licences/basic-lease',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const LicencesExclusiveRoute = LicencesExclusiveRouteImport.update({
   id: '/licences/exclusive',
   path: '/licences/exclusive',
@@ -166,6 +172,7 @@ export interface FileRoutesByFullPath {
   '/checkout/$slug': typeof CheckoutSlugRoute
   '/checkout/cancel': typeof CheckoutCancelRoute
   '/checkout/success': typeof CheckoutSuccessRoute
+  '/licences/basic-lease': typeof LicencesBasicLeaseRoute
   '/licences/exclusive': typeof LicencesExclusiveRoute
   '/licences/unlimited-lease': typeof LicencesUnlimitedLeaseRoute
   '/beats/': typeof BeatsIndexRoute
@@ -189,6 +196,7 @@ export interface FileRoutesByTo {
   '/checkout/$slug': typeof CheckoutSlugRoute
   '/checkout/cancel': typeof CheckoutCancelRoute
   '/checkout/success': typeof CheckoutSuccessRoute
+  '/licences/basic-lease': typeof LicencesBasicLeaseRoute
   '/licences/exclusive': typeof LicencesExclusiveRoute
   '/licences/unlimited-lease': typeof LicencesUnlimitedLeaseRoute
   '/beats': typeof BeatsIndexRoute
@@ -215,6 +223,7 @@ export interface FileRoutesById {
   '/checkout/$slug': typeof CheckoutSlugRoute
   '/checkout/cancel': typeof CheckoutCancelRoute
   '/checkout/success': typeof CheckoutSuccessRoute
+  '/licences/basic-lease': typeof LicencesBasicLeaseRoute
   '/licences/exclusive': typeof LicencesExclusiveRoute
   '/licences/unlimited-lease': typeof LicencesUnlimitedLeaseRoute
   '/beats/': typeof BeatsIndexRoute
@@ -241,6 +250,7 @@ export interface FileRouteTypes {
     | '/checkout/$slug'
     | '/checkout/cancel'
     | '/checkout/success'
+    | '/licences/basic-lease'
     | '/licences/exclusive'
     | '/licences/unlimited-lease'
     | '/beats/'
@@ -264,6 +274,7 @@ export interface FileRouteTypes {
     | '/checkout/$slug'
     | '/checkout/cancel'
     | '/checkout/success'
+    | '/licences/basic-lease'
     | '/licences/exclusive'
     | '/licences/unlimited-lease'
     | '/beats'
@@ -289,6 +300,7 @@ export interface FileRouteTypes {
     | '/checkout/$slug'
     | '/checkout/cancel'
     | '/checkout/success'
+    | '/licences/basic-lease'
     | '/licences/exclusive'
     | '/licences/unlimited-lease'
     | '/beats/'
@@ -313,6 +325,7 @@ export interface RootRouteChildren {
   CheckoutSlugRoute: typeof CheckoutSlugRoute
   CheckoutCancelRoute: typeof CheckoutCancelRoute
   CheckoutSuccessRoute: typeof CheckoutSuccessRoute
+  LicencesBasicLeaseRoute: typeof LicencesBasicLeaseRoute
   LicencesExclusiveRoute: typeof LicencesExclusiveRoute
   LicencesUnlimitedLeaseRoute: typeof LicencesUnlimitedLeaseRoute
   BeatsIndexRoute: typeof BeatsIndexRoute
@@ -433,6 +446,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LicencesIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/licences/basic-lease': {
+      id: '/licences/basic-lease'
+      path: '/licences/basic-lease'
+      fullPath: '/licences/basic-lease'
+      preLoaderRoute: typeof LicencesBasicLeaseRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/licences/exclusive': {
       id: '/licences/exclusive'
       path: '/licences/exclusive'
@@ -530,6 +550,7 @@ const rootRouteChildren: RootRouteChildren = {
   CheckoutSlugRoute: CheckoutSlugRoute,
   CheckoutCancelRoute: CheckoutCancelRoute,
   CheckoutSuccessRoute: CheckoutSuccessRoute,
+  LicencesBasicLeaseRoute: LicencesBasicLeaseRoute,
   LicencesExclusiveRoute: LicencesExclusiveRoute,
   LicencesUnlimitedLeaseRoute: LicencesUnlimitedLeaseRoute,
   BeatsIndexRoute: BeatsIndexRoute,

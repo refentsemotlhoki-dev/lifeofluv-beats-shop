@@ -9,12 +9,12 @@ export const Route = createFileRoute("/licences/unlimited-lease")({
       {
         name: "description",
         content:
-          "Read the full LifeOfLuv Unlimited Beat Licence Agreement — a non-exclusive licence at $199 CAD, signed electronically at checkout.",
+          "Read the full LifeOfLuv Unlimited Beat Licence Agreement — a non-exclusive licence at $99 CAD, signed electronically at checkout.",
       },
       { property: "og:title", content: "Unlimited Beat Licence Agreement — LifeOfLuv" },
       {
         property: "og:description",
-        content: "Non-exclusive licence at $199 CAD. Read the full agreement before you buy.",
+        content: "Non-exclusive licence at $99 CAD. Read the full agreement before you buy.",
       },
     ],
   }),

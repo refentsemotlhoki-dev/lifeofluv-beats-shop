@@ -9,12 +9,12 @@ export const Route = createFileRoute("/licences/exclusive")({
       {
         name: "description",
         content:
-          "Read the full LifeOfLuv Exclusive Beat Licence Agreement — $599 CAD, stops new licences after your order, signed electronically at checkout.",
+          "Read the full LifeOfLuv Exclusive Beat Licence Agreement — $399 CAD, stops new licences after your order, signed electronically at checkout.",
       },
       { property: "og:title", content: "Exclusive Beat Licence Agreement — LifeOfLuv" },
       {
         property: "og:description",
-        content: "$599 CAD. LifeOfLuv stops new licences for the beat after your order.",
+        content: "$399 CAD. LifeOfLuv stops new licences for the beat after your order.",
       },
     ],
   }),

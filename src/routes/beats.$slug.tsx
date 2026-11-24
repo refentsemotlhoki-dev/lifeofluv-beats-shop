@@ -16,7 +16,7 @@ export const Route = createFileRoute("/beats/$slug")({
       };
     }
     const { beat } = loaderData;
-    const description = `${beat.title} — ${beat.bpm} BPM, ${beat.key}. Unlimited Lease $${PRICES.lease} CAD or Exclusive $${PRICES.exclusive} CAD.`;
+    const description = `${beat.title} — ${beat.bpm} BPM, ${beat.key}. Basic Lease $${PRICES.basic} CAD · Unlimited Lease $${PRICES.lease} CAD · Exclusive $${PRICES.exclusive} CAD.`;
     return {
       meta: [
         { title: `${beat.title} — Beat by LifeOfLuv` },
@@ -74,7 +74,32 @@ function BeatPage() {
 
           <div className="hairline my-8" />
 
+          {/* Basic Lease */}
           <div className="velvet-panel rounded-lg p-6">
+            <p className="eyebrow">Basic Lease — ${PRICES.basic} CAD</p>
+            <p className="mt-4 text-muted-foreground">
+              Make your first move. High-quality MP3, up to 50,000 audio streams and 10,000 monetized video views. Everything you need to record, release and start building your sound.
+            </p>
+            {beat.exclusiveSold ? (
+              <p className="mt-6 text-sm text-muted-foreground">
+                This beat is no longer available for new licences.
+              </p>
+            ) : (
+              <Link
+                to="/checkout/$slug"
+                params={{ slug: beat.slug }}
+                search={{ licence: "basic" }}
+                className="btn-base btn-ghost mt-6"
+              >
+                Get Basic Lease
+              </Link>
+            )}
+            <p className="mt-4 text-xs text-muted-foreground">
+              Eligible for upgrade to Unlimited Lease — pay only the difference.
+            </p>
+          </div>
+
+          <div className="velvet-panel mt-6 rounded-lg p-6">
             <p className="eyebrow">Unlimited Lease — ${PRICES.lease} CAD</p>
             <p className="mt-4 text-muted-foreground">
               Release your music with a broad, non-exclusive licence. You can use the beat in your

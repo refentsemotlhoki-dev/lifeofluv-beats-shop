@@ -8,12 +8,12 @@ export const Route = createFileRoute("/licences/")({
       {
         name: "description",
         content:
-          "Unlimited Lease $199 CAD or Exclusive $599 CAD. See exactly what each LifeOfLuv licence covers before you buy.",
+          "Basic Lease $20, Unlimited Lease $99, or Exclusive $399 CAD. See exactly what each LifeOfLuv licence covers before you buy.",
       },
       { property: "og:title", content: "Compare Licences — LifeOfLuv" },
       {
         property: "og:description",
-        content: "Unlimited Lease $199 CAD or Exclusive $599 CAD — one simple decision.",
+        content: "Three tiers: Basic Lease $20, Unlimited Lease $99, Exclusive $399 CAD — one simple decision.",
       },
     ],
   }),
@@ -28,15 +28,23 @@ function Licences() {
         Give your customers one simple decision
       </h1>
       <p className="mt-5 max-w-2xl text-muted-foreground">
-        Need a beat for your next release? Choose the Unlimited Lease. Want LifeOfLuv to stop
-        offering that beat for new licences after your purchase? Choose Exclusive.
+        Starting at $20, LifeOfLuv keeps licensing simple. Choose the tier that fits where you are right now.
       </p>
 
       <div className="mt-12">
         <LicenceTable />
       </div>
 
-      <div className="mt-16 grid gap-10 md:grid-cols-2">
+      <div className="mt-16 grid gap-10 md:grid-cols-3">
+        <div>
+          <h2 className="text-2xl">What is a Basic Lease?</h2>
+          <p className="mt-4 text-muted-foreground">
+            The Basic Lease is designed for emerging artists ready to release their first record. You get a high-quality untagged MP3 with up to 50,000 audio streams and 10,000 monetized video views on a single commercial song. It's non-exclusive and eligible for upgrade at any time — you only pay the difference.
+          </p>
+          <Link to="/licences/basic-lease" className="btn-base btn-ghost mt-6">
+            Read the agreement
+          </Link>
+        </div>
         <div>
           <h2 className="text-2xl">What is an Unlimited Lease?</h2>
           <p className="mt-4 text-muted-foreground">
@@ -62,9 +70,7 @@ function Licences() {
       </div>
 
       <blockquote className="velvet-panel mt-16 rounded-lg p-8 text-lg leading-relaxed">
-        <span className="platinum-text">The short version:</span> Unlimited Lease — you can use the
-        beat; others may also license it. Exclusive — LifeOfLuv stops new licensing after your
-        purchase; earlier licences remain valid.
+        <span className="platinum-text">The short version:</span> Basic Lease — your entry point, usage-limited, eligible for upgrade. Unlimited Lease — no ceilings, still non-exclusive. Exclusive — LifeOfLuv stops new licensing after your purchase; earlier licences remain valid.
       </blockquote>
     </section>
   );

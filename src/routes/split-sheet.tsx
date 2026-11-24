@@ -15,7 +15,7 @@ export const Route = createFileRoute("/split-sheet")({
       {
         property: "og:description",
         content:
-          "Default 50/50 composition split for exclusive beats, with room for additional writers and publishers.",
+          "Default 50/50 composition split across all LifeOfLuv beats, with room for additional writers and publishers.",
       },
     ],
   }),
@@ -65,7 +65,7 @@ function SplitSheet() {
 
       <div className="hairline my-10" />
       <p className="text-sm text-muted-foreground">
-        The Exclusive Beat Licence sets a default 50% composition interest to LifeOfLuv and 50% to
+        LifeOfLuv licences establish a default 50% composition interest to LifeOfLuv and 50% to
         the artist side. A signed split sheet controls whenever a song has additional writers,
         co-producers or publishers, or whenever that default is changed.
       </p>

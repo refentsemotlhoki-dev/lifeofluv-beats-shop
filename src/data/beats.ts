@@ -1,7 +1,9 @@
 export const PRICES = {
-  lease: 199,
-  exclusive: 599,
+  basic: 20,
+  lease: 99,
+  exclusive: 399,
 } as const;
+export type Licence = "basic" | "lease" | "exclusive";
 
 export type Beat = {
   slug: string;

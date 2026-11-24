@@ -13,7 +13,7 @@ export type Clause = {
 };
 
 export type Agreement = {
-  id: "unlimited" | "exclusive";
+  id: "basic-lease" | "unlimited" | "exclusive";
   title: string;
   price: number;
   licenceType: string;
@@ -27,7 +27,7 @@ export type Agreement = {
 export const UNLIMITED_AGREEMENT: Agreement = {
   id: "unlimited",
   title: "Unlimited Beat Licence Agreement",
-  price: 199,
+  price: 99,
   licenceType: "Unlimited / Non-Exclusive",
   effective: "The date of purchase of the applicable Beat.",
   intro: [
@@ -42,12 +42,13 @@ export const UNLIMITED_AGREEMENT: Agreement = {
         '"Song" means a new musical work created by Licensee incorporating the Beat, including vocals, lyrics, melodies, performances, or other original material added by Licensee or third parties.',
         '"Lease" means the non-exclusive, unlimited licence granted under this Agreement.',
         '"Exclusive Licence" means a separate exclusive licence purchased from LifeOfLuv for a specific Beat.',
+        '"Basic Lease" means the limited non-exclusive licence granted under the Basic Beat Licence Agreement.',
       ],
     },
     {
       heading: "2. Licence grant",
       paras: [
-        "Upon successful payment of the $199 CAD Unlimited Lease fee, LifeOfLuv grants Licensee a non-exclusive, worldwide, perpetual licence to use the Beat in connection with the creation, recording, distribution, promotion, performance, and commercial exploitation of a Song.",
+        "Upon successful payment of the applicable Unlimited Lease fee (the purchase price recorded in your order confirmation), LifeOfLuv grants Licensee a non-exclusive, worldwide, perpetual licence to use the Beat in connection with the creation, recording, distribution, promotion, performance, and commercial exploitation of a Song.",
         "The licence becomes effective when payment has been successfully completed.",
       ],
       listIntro: "This licence is:",
@@ -251,6 +252,29 @@ export const UNLIMITED_AGREEMENT: Agreement = {
         "Failure by LifeOfLuv to enforce any provision of this Agreement does not constitute a waiver of LifeOfLuv's right to enforce that provision later.",
       ],
     },
+    {
+      heading: "24. Composition and Royalties",
+      paras: [
+        "The Beat was created solely by LifeOfLuv. As a condition of this Licence, the Licensee agrees that any musical composition embodied in the Licensed Work shall be co-owned as follows: fifty percent (50%) to LifeOfLuv and fifty percent (50%) to the Licensee (or the Licensee's designated songwriter). This split applies to publishing royalties derived from the composition.",
+        "The master recording of the Licensed Work is owned by the Licensee, subject to the licence restrictions set out in this Agreement. Master recording royalties, if any, are separately negotiated.",
+        "The Licensee shall register the composition split with their performing rights organisation (PRO) promptly after release. LifeOfLuv reserves the right to register the split independently if the Licensee fails to do so within ninety (90) days of release.",
+        "The upfront licence fee paid by the Licensee is retained 100% by LifeOfLuv and does not form part of any revenue share arrangement.",
+      ],
+    },
+    {
+      heading: "25. Content ID and Automated Rights Claims",
+      paras: [
+        "The Licensee may monetize the Licensed Work on YouTube and other platforms using standard monetization tools. However, the Licensee may not enroll the Licensed Work in any automated copyright-claim system (including but not limited to YouTube Content ID) in a manner that would generate claims against other licensees who hold a valid licence for the same Beat.",
+        "LifeOfLuv reserves the right to administer Content ID for the underlying Beat instrumental. Any monetization revenue attributed to the Beat's underlying composition or instrumental shall be distributed in accordance with the composition split set out in this Agreement.",
+      ],
+    },
+    {
+      heading: "26. Licence Upgrades",
+      paras: [
+        "A Licensee who holds a valid Basic Beat Licence for this Beat may upgrade to this Unlimited Lease Licence by paying the difference between the original purchase price and the current Unlimited Lease price. Upgrades are available at LifeOfLuv's sole discretion and are subject to availability at the time of the upgrade request.",
+        "An upgrade does not constitute a new agreement; the Licensee's original purchase date and signed agreement remain on record. The upgraded rights take effect from the date the upgrade fee is received.",
+      ],
+    },
   ],
   acceptanceIntro:
     "By purchasing an Unlimited LifeOfLuv Beat Licence, Licensee confirms that:",
@@ -261,16 +285,171 @@ export const UNLIMITED_AGREEMENT: Agreement = {
     "they understand other artists may have licences to the same Beat;",
     "they understand an Exclusive Licence may subsequently be sold;",
     "they understand previous licences remain valid after an Exclusive Licence is sold;",
-    "they understand the purchase is $199 CAD;",
-    "they understand purchases are non-refundable except where applicable law provides otherwise; and",
+    "they understand the purchase price is the applicable licence fee recorded in their order confirmation;",
+    "they understand purchases are non-refundable except where applicable law provides otherwise;",
+    "they agree to the 50/50 composition split with LifeOfLuv;",
+    "they will not use Content ID in a manner that claims against other valid licensees; and",
     "they agree to comply with all terms of this Agreement.",
+  ],
+};
+
+export const BASIC_AGREEMENT: Agreement = {
+  id: "basic-lease",
+  title: "Basic Beat Licence Agreement",
+  price: 20,
+  licenceType: "Basic / Non-Exclusive",
+  effective: "The date of purchase of the applicable Beat.",
+  intro: [
+    'This Basic Beat Licence Agreement (the "Agreement") is between LifeOfLuv ("Producer," "Licensor," "we," "us," or "our") and the person or entity purchasing the Beat ("Licensee," "you," or "your").',
+    "By affirmatively accepting this Agreement at checkout and completing payment, you agree to be bound by it.",
+    "This is a limited, non-exclusive licence designed for emerging artists ready to release their first record. It grants permissions to use the Beat subject to specific distribution and streaming limits, and includes an option to upgrade to an Unlimited Lease at any time by paying the difference in price.",
+  ],
+  clauses: [
+    {
+      heading: "1. Beat and purchase record",
+      paras: [
+        "The purchased Beat, purchaser information, purchase date, licence fee, and transaction details are recorded in the order confirmation and licence record associated with this purchase. Those records form part of this Agreement.",
+      ],
+    },
+    {
+      heading: "2. Definitions",
+      paras: [
+        '"Beat" means the instrumental musical composition and associated audio files supplied by LifeOfLuv for the purchase (specifically high-quality untagged MP3 audio).',
+        '"Song" means one (1) new original musical work created by Licensee incorporating the Beat, including original vocals, lyrics, melodies, or performances added by Licensee.',
+        '"Lease" or "Basic Lease" means the limited, non-exclusive licence granted under this Agreement.',
+        '"Unlimited Lease" means a separate non-exclusive licence without stream caps available from LifeOfLuv for the Beat.',
+        '"Exclusive Licence" means a separate exclusive licence purchased from LifeOfLuv for the Beat.',
+      ],
+    },
+    {
+      heading: "3. Licence grant",
+      paras: [
+        "Upon successful payment of the applicable Basic Lease fee (the purchase price recorded in your order confirmation, currently $20 CAD), LifeOfLuv grants Licensee a non-exclusive, worldwide, limited licence to use the Beat solely in connection with the creation, recording, digital distribution, promotion, and commercial exploitation of one (1) single Song.",
+        "The licence becomes effective when payment has been successfully completed.",
+      ],
+      listIntro: "This licence includes:",
+      bullets: [
+        "Delivery of one (1) high-quality untagged MP3 file of the Beat.",
+        "Permission to record vocals and create one (1) commercial Song embodying the Beat.",
+        "Distribution of the Song on digital streaming platforms (such as Spotify, Apple Music, YouTube Music, Tidal, Amazon Music) up to a maximum of 50,000 aggregate audio streams.",
+        "Creation and monetization of video content embodying the Song (including music videos, lyric videos, and visualizers) up to a maximum of 10,000 aggregate monetized video views.",
+        "Distribution of up to 1,000 paid digital downloads of the Song.",
+        "Live public performances of the Song at non-profit or paid live events.",
+      ],
+    },
+    {
+      heading: "4. Usage limits and upgrade obligation",
+      paras: [
+        "The rights granted under this Basic Lease are strictly capped at 50,000 audio streams, 10,000 monetized video views, and 1,000 paid downloads. If the Song approaches or reaches any of these thresholds, Licensee must upgrade to the Unlimited Lease by paying the difference in price before exceeding the limit.",
+        "Exploiting the Song beyond the applicable usage limits without purchasing an Unlimited Lease upgrade constitutes a material breach of this Agreement and copyright infringement of the Beat.",
+      ],
+    },
+    {
+      heading: "5. Non-exclusivity and other leases",
+      paras: [
+        "This licence is non-exclusive. LifeOfLuv retains the full right to license the same Beat to other artists, producers, and third parties under Basic Leases or Unlimited Leases, or to sell an Exclusive Licence for the Beat.",
+        "Licensee understands and accepts that other artists may create and commercially release songs using the identical Beat.",
+      ],
+    },
+    {
+      heading: "6. Prohibited uses",
+      listIntro: "Licensee may not:",
+      bullets: [
+        "Broadcast the Song on terrestrial, satellite, or commercial radio.",
+        "Place or sync the Song in film, television, commercials, video games, or theatrical productions without separate written synchronization clearance from LifeOfLuv.",
+        "Resell, sublicense, share, upload, or redistribute the standalone Beat files or any portion thereof.",
+        "Enroll the Song or Beat in any automated copyright identification system (such as YouTube Content ID or Meta Rights Manager) that would generate copyright claims against other valid licensees of the Beat.",
+        "Create more than one (1) commercial Song using the Beat under this single licence.",
+      ],
+    },
+    {
+      heading: "7. Composition and royalty split",
+      paras: [
+        "The Beat was created solely by LifeOfLuv. As a condition of this Licence, the Licensee agrees that any musical composition embodied in the Licensed Song shall be co-owned as follows: fifty percent (50%) to LifeOfLuv and fifty percent (50%) to the Licensee (or the Licensee's designated songwriter). This split applies to all publishing royalties and performance royalties derived from the composition.",
+        "The master recording of the Song is owned by the Licensee, subject to the licence restrictions set out in this Agreement. Master recording royalties belong to Licensee.",
+        "The Licensee shall register the composition split with their performing rights organisation (such as SOCAN, BMI, or ASCAP) promptly after release, naming LifeOfLuv as co-writer/producer. LifeOfLuv reserves the right to register its share independently.",
+        "The upfront licence fee paid by the Licensee is retained 100% by LifeOfLuv and is not recoupable against publishing royalties.",
+      ],
+    },
+    {
+      heading: "8. Content ID and automated rights claims",
+      paras: [
+        "Licensee may monetize standard video uploads of the Song on platforms like YouTube and TikTok. However, Licensee is strictly prohibited from submitting or enrolling the Song in YouTube Content ID, Meta Rights Manager, TikTok Rights Manager, or any automated copyright detection and monetization network.",
+        "Because the Beat is licensed non-exclusively, automated fingerprints would generate false copyright claims against other legitimate licensees and against LifeOfLuv. A breach of this section causes irreparable harm and terminates this licence immediately.",
+      ],
+    },
+    {
+      heading: "9. Producer credit",
+      paras: [
+        'Licensee must provide production credit to LifeOfLuv on all commercial releases, metadata, digital distribution, liner notes, and video descriptions in substantially the following form: "Produced by LifeOfLuv" or "Prod. LifeOfLuv".',
+      ],
+    },
+    {
+      heading: "10. Ownership of the Beat",
+      paras: [
+        "LifeOfLuv retains all right, title, and interest in and to the Beat and its underlying copyright, including all sound recordings, musical compositions, sound design, and arrangement. No copyright in the Beat is transferred to Licensee.",
+      ],
+    },
+    {
+      heading: "11. Licence upgrades and subsequent Exclusive sale",
+      paras: [
+        "Licensee may upgrade this Basic Lease to an Unlimited Lease at any time by paying the difference between the original purchase price and the then-current Unlimited Lease price ($79 CAD at introductory pricing).",
+        "If LifeOfLuv subsequently sells an Exclusive Licence for the Beat to another party, Licensee's rights under this Agreement survive and remain valid. Furthermore, Licensee retains the limited right to upgrade this existing Song to an Unlimited Lease even after an Exclusive sale, provided the upgrade applies solely to the existing Song and no new works are created.",
+      ],
+    },
+    {
+      heading: "12. Payment and refunds",
+      paras: [
+        "The licence fee is the purchase price shown at checkout plus applicable taxes. Because digital beat files are delivered immediately upon payment, all sales are final and non-refundable, except where required by applicable consumer protection laws.",
+      ],
+    },
+    {
+      heading: "13. Representations and warranties",
+      paras: [
+        "Licensee represents and warrants that any vocals, lyrics, samples, or other elements added to the Beat are original or fully cleared, and will not infringe any third-party intellectual property rights.",
+        "Licensee agrees to indemnify and hold harmless LifeOfLuv from any claims, damages, or legal expenses arising from Licensee's breach of this Agreement.",
+      ],
+    },
+    {
+      heading: "14. Disclaimer and limitation of liability",
+      paras: [
+        "The Beat is provided as-is. LifeOfLuv makes no guarantees regarding chart success, streaming numbers, or commercial reception.",
+        "To the fullest extent permitted by law, LifeOfLuv's total aggregate liability arising out of this Agreement shall not exceed the licence fee paid by Licensee.",
+      ],
+    },
+    {
+      heading: "15. Termination",
+      paras: [
+        "LifeOfLuv may terminate this Agreement immediately upon written notice if Licensee exceeds the usage limits without upgrading, enrolls the Song in Content ID, fails to credit LifeOfLuv, or otherwise materially breaches this Agreement.",
+        "Upon termination, all rights granted to Licensee cease, and Licensee must remove the Song from all streaming and distribution platforms.",
+      ],
+    },
+    {
+      heading: "16. Governing law",
+      paras: [
+        "This Agreement is governed by the laws of the Province of Ontario and the federal laws of Canada applicable therein. The parties submit to the exclusive jurisdiction of the courts of Ontario.",
+      ],
+    },
+  ],
+  acceptanceIntro:
+    "By purchasing the Basic Beat Licence, Licensee confirms that:",
+  acceptanceItems: [
+    "they have read, understood, and agreed to all terms of this Agreement;",
+    "they understand this licence is capped at 50,000 streams, 10,000 video views, and 1,000 paid downloads;",
+    "they agree to upgrade to an Unlimited Lease before exceeding any usage limits;",
+    "they understand file delivery includes high-quality MP3 only (WAV and stems require an upgrade);",
+    "they agree to the 50/50 composition and publishing royalty split with LifeOfLuv;",
+    "they will give producer credit as 'Prod. LifeOfLuv';",
+    "they will NOT enroll the Song in YouTube Content ID or automated copyright claim systems;",
+    "they understand other artists may license the same Beat; and",
+    "all purchases are final and non-refundable.",
   ],
 };
 
 export const EXCLUSIVE_AGREEMENT: Agreement = {
   id: "exclusive",
   title: "Exclusive Beat Licence Agreement",
-  price: 599,
+  price: 399,
   licenceType: "Exclusive",
   effective:
     "The date on which LifeOfLuv receives successful payment for the applicable Beat.",
@@ -296,7 +475,7 @@ export const EXCLUSIVE_AGREEMENT: Agreement = {
     {
       heading: "3. Exclusive licence grant",
       listIntro:
-        "After LifeOfLuv receives the $599 CAD Exclusive licence fee, LifeOfLuv grants Licensee an exclusive, worldwide, perpetual licence to use the Beat as incorporated into Songs, subject to this Agreement. Licensee may:",
+        "After LifeOfLuv receives the applicable Exclusive licence fee (the purchase price recorded in the Licensee's order confirmation), LifeOfLuv grants Licensee an exclusive, worldwide, perpetual licence to use the Beat as incorporated into Songs, subject to this Agreement. Licensee may:",
       bullets: [
         "Record vocals or other performances over the Beat and create, reproduce, distribute, promote, perform, communicate, and monetize Songs.",
         "Release Songs commercially on digital streaming services, download stores, social platforms, websites, radio, television, film, advertising, games, and other lawful media.",
@@ -308,28 +487,29 @@ export const EXCLUSIVE_AGREEMENT: Agreement = {
     {
       heading: '4. What "exclusive" means',
       paras: [
-        "After the Effective Date, LifeOfLuv will stop offering, selling, licensing, or granting new customer licences for the Beat. LifeOfLuv will remove the Beat from its store for new licensing. This is an exclusive licence, not a transfer or assignment of ownership of the underlying copyright.",
+        "After the Effective Date, LifeOfLuv will stop offering, selling, licensing, or granting new customer licences for the Beat for new songs. LifeOfLuv will remove the Beat from its store for new licensing. This is an exclusive licence, not a transfer or assignment of ownership of the underlying copyright.",
         "The Licensee does not acquire ownership of LifeOfLuv's producer identity, trademarks, business name, catalogue generally, unreleased projects, or any Beat other than the specific licensed Beat.",
+        "Notwithstanding the exclusivity granted herein, any person who purchased a Basic Beat Licence for this Beat prior to this Exclusive sale retains the limited right to upgrade that Basic Licence to an Unlimited Lease Licence by paying the applicable upgrade fee, subject to the terms of the Basic Lease Upgrade Exception clause below. No new Basic Lease or Unlimited Lease licences for new songs will be issued after the Effective Date.",
       ],
     },
     {
       heading: "5. Existing leases survive",
       paras: [
         "An Exclusive purchase does not cancel, invalidate, or interfere with any valid licence granted before the Effective Date. Every Existing Lease remains in effect according to its own terms. Existing licensees may continue to use, distribute, promote, monetize, perform, and otherwise exploit their Songs as their licences allow.",
-        "The Licensee may not issue takedowns, copyright claims, or other enforcement actions against an Existing Lease holder solely because the Licensee purchased this Exclusive licence. LifeOfLuv will not grant new customer licences for the Beat after the Effective Date.",
+        "The Licensee may not issue takedowns, copyright claims, or other enforcement actions against an Existing Lease holder solely because the Licensee purchased this Exclusive licence. LifeOfLuv will not grant new customer licences for new songs using the Beat after the Effective Date. For the avoidance of doubt, the upgrade exception for pre-existing Basic Lease holders set out in this Agreement does not constitute a new licence for a new song.",
       ],
     },
     {
       heading: "6. Ownership of the Beat",
       paras: [
-        "LifeOfLuv retains all right, title, and interest in and to the Beat and its underlying copyright, including LifeOfLuv's producer contribution, production elements, project files, and rights not expressly granted by this Agreement. The $599 purchase does not assign the Beat's copyright to Licensee.",
+        "LifeOfLuv retains all right, title, and interest in and to the Beat and its underlying copyright, including LifeOfLuv's producer contribution, production elements, project files, and rights not expressly granted by this Agreement. The purchase of this licence does not assign the Beat's underlying copyright to Licensee.",
         "Licensee owns the original lyrics, vocals, performances, and other original material created or supplied by Licensee or its collaborators, subject to any third-party rights.",
       ],
     },
     {
       heading: "7. Song composition and royalty split",
       paras: [
-        "The $599 Exclusive purchase includes the parties' agreement that LifeOfLuv retains a 50% interest in the underlying musical composition embodied in a Song created from the Beat, and the artist/licensee side receives the remaining 50% interest, unless the parties sign a different written split sheet for that specific Song.",
+        "The Exclusive purchase includes the parties' agreement that LifeOfLuv retains a 50% interest in the underlying musical composition embodied in a Song created from the Beat, and the artist/licensee side receives the remaining 50% interest, unless the parties sign a different written split sheet for that specific Song.",
         "For clarity, the 50% artist/licensee side may be divided among the artist and any additional writers according to a signed split sheet. A label, manager, publisher, distributor, or other business entity does not automatically receive a composition share merely because it represents or distributes the artist.",
         "Publishing administration, collection, and registration should follow the agreed composition ownership. Neither party may register, administer, assign, or collect the other party's composition interest without that party's written authorization.",
         "The parties should complete and sign a Song Split Sheet whenever a Song has additional writers, co-producers, publishers, or other contributors, or whenever the default 50/50 arrangement is changed. The signed split sheet controls the allocation for that Song.",
@@ -375,7 +555,7 @@ export const EXCLUSIVE_AGREEMENT: Agreement = {
     {
       heading: "13. Payment and refunds",
       paras: [
-        "The licence fee is $599 CAD plus applicable taxes shown at checkout. All sales are final and non-refundable except where a refund, cancellation, or other remedy is required by applicable law or LifeOfLuv agrees otherwise in writing. Nothing in this Agreement limits a right that cannot legally be excluded or waived.",
+        "The licence fee is the purchase price shown at checkout and recorded in Licensee's order confirmation plus applicable taxes. All sales are final and non-refundable except where a refund, cancellation, or other remedy is required by applicable law or LifeOfLuv agrees otherwise in writing. Nothing in this Agreement limits a right that cannot legally be excluded or waived.",
       ],
     },
     {
@@ -421,13 +601,14 @@ export const EXCLUSIVE_AGREEMENT: Agreement = {
     "the survival of valid Existing Leases granted before the Effective Date;",
     "LifeOfLuv's retained ownership of the Beat and its underlying copyright;",
     "the default 50/50 composition arrangement for the resulting Song unless a separate split sheet is signed;",
-    "they understand the purchase is $599 CAD;",
+    "they understand the purchase price is the applicable licence fee recorded in their order confirmation;",
     "purchases are final and non-refundable except where applicable law provides otherwise; and",
     "they agree to comply with all terms of this Agreement.",
   ],
 };
 
 export const AGREEMENTS = {
+  basic: BASIC_AGREEMENT,
   lease: UNLIMITED_AGREEMENT,
   exclusive: EXCLUSIVE_AGREEMENT,
 } as const;
@@ -453,8 +634,10 @@ export const SITE_TERMS: { intro: string[]; clauses: Clause[] } = {
         'LifeOfLuv may sell instrumental beats, audio files, trackouts, stems, sound recordings, licence documents, and related digital materials (each, a "Product"). A purchase grants only the licence expressly identified on the applicable product page, checkout screen, receipt, and licence agreement. It does not transfer ownership of the underlying Beat, composition, files, trademarks, or other LifeOfLuv intellectual property unless a written agreement signed by LifeOfLuv expressly says otherwise.',
       ],
       bullets: [
-        "The $199 CAD Unlimited Beat Licence is non-exclusive and is governed by its separate licence agreement.",
-        "The $599 CAD Exclusive Beat Licence is governed by its separate licence agreement and is subject to any valid prior non-exclusive licences.",
+        "The Basic Beat Licence is a limited non-exclusive licence (governed by its separate agreement) intended for emerging artists, capped at 50,000 streams and eligible for upgrade.",
+        "The Unlimited Beat Licence is a non-exclusive licence without stream caps, governed by its separate licence agreement.",
+        "The Exclusive Beat Licence is governed by its separate licence agreement, under which the beat is removed from the store for future licensing, subject to valid prior non-exclusive licences and upgrade rights.",
+        "Licence fees are determined by the pricing tier displayed at checkout and recorded in your order confirmation.",
         "If these Terms conflict with a product-specific licence agreement, the product-specific licence agreement controls for that Product.",
       ],
     },
