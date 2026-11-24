@@ -12,12 +12,13 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Straightforward beats for artists ready to make the record. Unlimited Lease $199 CAD, Exclusive $599 CAD. Secure checkout, instant delivery.",
+          "Straightforward beats for artists ready to make the record. Basic Lease $20 CAD, Unlimited Lease $99 CAD, or Exclusive Rights $399 CAD. Secure checkout, instant delivery.",
       },
       { property: "og:title", content: "LifeOfLuv — Simple Licensing. Serious Production." },
       {
         property: "og:description",
-        content: "Beats by LifeOfLuv. Unlimited Lease $199 CAD or Exclusive $599 CAD.",
+        content:
+          "Beats by LifeOfLuv. Basic Lease $20 CAD, Unlimited Lease $99 CAD, or Exclusive Rights $399 CAD.",
       },
     ],
   }),

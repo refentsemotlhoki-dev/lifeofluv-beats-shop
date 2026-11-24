@@ -75,10 +75,15 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         name: "description",
         content:
-          "Beats by LifeOfLuv. Unlimited Lease $199 CAD or Exclusive $599 CAD, with clear pricing and instant delivery.",
+          "Beats by LifeOfLuv. Basic Lease $20 CAD, Unlimited Lease $99 CAD, or Exclusive Rights $399 CAD, with clear pricing and instant delivery.",
       },
       { name: "author", content: "LifeOfLuv" },
       { property: "og:type", content: "website" },
+      {
+        property: "og:description",
+        content:
+          "Beats by LifeOfLuv. Basic Lease $20 CAD, Unlimited Lease $99 CAD, or Exclusive Rights $399 CAD.",
+      },
       { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [
